@@ -1,0 +1,21 @@
+library movie;
+
+export 'package:equatable/equatable.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:movie/domain/entities/movie.dart';
+export 'package:movie/domain/entities/movie_detail.dart';
+export 'package:movie/domain/repository/movie_repository.dart';
+export 'package:movie/domain/usecases/get_movie_detail.dart';
+export 'package:movie/domain/usecases/get_movie_recommendations.dart';
+export 'package:movie/domain/usecases/get_now_playing_movies.dart';
+export 'package:movie/domain/usecases/get_popular_movies.dart';
+export 'package:movie/domain/usecases/get_top_rated_movies.dart';
+export 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+export 'package:movie/presentation/bloc/movie_recommendations/movie_recommendations_bloc.dart';
+export 'package:movie/presentation/bloc/now_playing_movies/now_playing_movies_bloc.dart';
+export 'package:movie/presentation/bloc/popular_movies/popular_movies_bloc.dart';
+export 'package:movie/presentation/bloc/top_rated_movies/top_rated_movies_bloc.dart';
+export 'package:movie/presentation/pages/home_movie_page.dart';
+export 'package:movie/presentation/pages/movie_detail_page.dart';
+export 'package:movie/presentation/pages/popular_movies_page.dart';
+export 'package:movie/presentation/pages/top_rated_movies_page.dart';
