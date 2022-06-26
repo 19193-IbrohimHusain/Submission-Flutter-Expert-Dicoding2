@@ -61,6 +61,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 }
 
+// ignore: must_be_immutable
 class DetailContent extends StatefulWidget {
   final MovieDetail movie;
   bool isAddedWatchlist;
