@@ -63,19 +63,25 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   }
 }
 
-class DetailContent extends StatelessWidget {
+// ignore: must_be_immutable
+class DetailContent extends StatefulWidget {
   final TvSeriesDetail tvSeries;
-  final bool isAddedWatchlist;
+  late bool isAddedWatchlist;
 
-  const DetailContent(this.tvSeries, this.isAddedWatchlist, {Key? key}) : super(key: key);
+  DetailContent(this.tvSeries, this.isAddedWatchlist, {Key? key}) : super(key: key);
 
+  @override
+  State<DetailContent> createState() => _DetailContentState();
+}
+
+class _DetailContentState extends State<DetailContent> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: '$baseImageUrl${tvSeries.posterPath}',
+          imageUrl: '$baseImageUrl${widget.tvSeries.posterPath}',
           width: screenWidth,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
@@ -106,21 +112,21 @@ class DetailContent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              tvSeries.name,
+                              widget.tvSeries.name,
                               style: kHeading5,
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                if (!isAddedWatchlist) {
+                                if (!widget.isAddedWatchlist) {
                                   context.read<WatchlistTvSeriesBloc>().add(
-                                      AddTvSeriesToWatchlist(tvSeries));
+                                      AddTvSeriesToWatchlist(widget.tvSeries));
                                 } else {
                                   context.read<WatchlistTvSeriesBloc>().add(
                                       RemoveTvSeriesFromWatchlist(
-                                          tvSeries));
+                                          widget.tvSeries));
                                 }
 
-                                 String message = "";
+                                String message = "";
                                 const watchlistAddSuccessMessage =
                                     'Added to Watchlist';
                                 const watchlistRemoveSuccessMessage =
@@ -137,7 +143,7 @@ class DetailContent extends StatelessWidget {
                                       ? watchlistAddSuccessMessage
                                       : watchlistRemoveSuccessMessage;
                                 } else {
-                                  message = !isAddedWatchlist
+                                  message = !widget.isAddedWatchlist
                                       ? watchlistAddSuccessMessage
                                       : watchlistRemoveSuccessMessage;
                                 }
@@ -158,11 +164,15 @@ class DetailContent extends StatelessWidget {
                                         );
                                       });
                                 }
+                                setState(() {
+                                  widget.isAddedWatchlist =
+                                      !widget.isAddedWatchlist;
+                                });
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  isAddedWatchlist
+                                  widget.isAddedWatchlist
                                       ? const Icon(Icons.check)
                                       : const Icon(Icons.add),
                                   const Text('Watchlist'),
@@ -170,15 +180,15 @@ class DetailContent extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              _showGenres(tvSeries.genres),
+                              _showGenres(widget.tvSeries.genres),
                             ),
                             Text(
-                              (tvSeries.firstAirDate),
+                              (widget.tvSeries.firstAirDate),
                             ),
                             Row(
                               children: [
                                 RatingBarIndicator(
-                                  rating: tvSeries.voteAverage / 2,
+                                  rating: widget.tvSeries.voteAverage / 2,
                                   itemCount: 5,
                                   itemBuilder: (context, index) => const Icon(
                                     Icons.star,
@@ -186,7 +196,7 @@ class DetailContent extends StatelessWidget {
                                   ),
                                   itemSize: 24,
                                 ),
-                                Text('${tvSeries.voteAverage}')
+                                Text('${widget.tvSeries.voteAverage}')
                               ],
                             ),
                             const SizedBox(height: 16),
@@ -194,7 +204,7 @@ class DetailContent extends StatelessWidget {
                               'Overview',
                               style: kHeading6,
                             ),
-                            Text(tvSeries.overview.toString()),
+                            Text(widget.tvSeries.overview.toString()),
                             const SizedBox(height: 16),
                             Text(
                               'Seasons',
@@ -202,10 +212,10 @@ class DetailContent extends StatelessWidget {
                             ),
                             ListView.builder(
                               itemBuilder: (context, index) {
-                                return SeasonCard(tvSeries.seasons[index]);
+                                return SeasonCard(widget.tvSeries.seasons[index]);
                               },
                               shrinkWrap: true,
-                              itemCount: tvSeries.seasons.length,
+                              itemCount: widget.tvSeries.seasons.length,
                               physics: const NeverScrollableScrollPhysics(),
                             ),
                             const SizedBox(height: 16),
