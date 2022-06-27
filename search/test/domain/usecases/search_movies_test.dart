@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:movie/domain/entities/movie.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie/movie.dart';
-import 'package:search/search.dart';
+import 'package:search/domain/usecases/search_movies.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/helper_test.mocks.dart';
 
 void main() {
   late SearchMovies usecase;
@@ -16,7 +16,7 @@ void main() {
   });
 
   final tMovies = <Movie>[];
-  const tQuery = 'Spiderman';
+  const tQuery = 'spiderman';
 
   test('should get list of movies from the repository', () async {
     // arrange

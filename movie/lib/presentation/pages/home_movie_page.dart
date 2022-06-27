@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/movie.dart';
 
@@ -36,7 +35,6 @@ class _MovieHomePageState extends State<MovieHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              FirebaseCrashlytics.instance.crash();
               Navigator.pushNamed(context, SearchPage.routeName);
             },
             icon: const Icon(Icons.search),
