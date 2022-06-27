@@ -28,7 +28,7 @@ class SeasonModel extends Equatable {
         posterPath: json["poster_path"],
         seasonNumber: json["season_number"],
       );
-  
+
   Map<String, dynamic> toJson() => {
         "air_date": airDate,
         "episode_count": episodeCount,

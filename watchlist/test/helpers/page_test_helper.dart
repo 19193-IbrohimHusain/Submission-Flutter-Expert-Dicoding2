@@ -3,7 +3,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:watchlist/watchlist.dart';
 
-
 // fake Movie watchlist
 class FakeWatchlistMovieEvent extends Fake implements WatchlistMoviesEvent {}
 

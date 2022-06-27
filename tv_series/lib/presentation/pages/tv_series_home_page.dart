@@ -70,7 +70,8 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
                 SubHeading(
                     title: 'Popular',
                     onTap: () {
-                      Navigator.pushNamed(context, PopularTvSeriesPage.routeName);
+                      Navigator.pushNamed(
+                          context, PopularTvSeriesPage.routeName);
                     }),
                 BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
                     builder: (context, state) {
@@ -93,7 +94,8 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
                 SubHeading(
                     title: 'Top Rated',
                     onTap: () {
-                      Navigator.pushNamed(context, TopRatedTvSeriesPage.routeName);
+                      Navigator.pushNamed(
+                          context, TopRatedTvSeriesPage.routeName);
                     }),
                 BlocBuilder<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
                     builder: (context, state) {

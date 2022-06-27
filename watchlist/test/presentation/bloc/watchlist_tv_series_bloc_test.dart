@@ -61,8 +61,8 @@ void main() {
     blocTest<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
       'should emits WatchlistMoviesLoading state and then WatchlistMoviesError state when data is failed fetched..',
       build: () {
-        when(mockGetWatchlistTvSeries.execute())
-            .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
+        when(mockGetWatchlistTvSeries.execute()).thenAnswer(
+            (_) async => const Left(ServerFailure('Server Failure')));
         return watchlistTvSeriesBloc;
       },
       act: (bloc) => bloc.add(OnWatchlistTvSeriesCalled()),
@@ -143,7 +143,8 @@ void main() {
       'should throw failure message status when adding movie to watchlist is failed',
       build: () {
         when(mockSaveWatchlistTvSeries.execute(testTvDetail)).thenAnswer(
-            (_) async => const Left(DatabaseFailure('can\'t add data to watchlist')));
+            (_) async =>
+                const Left(DatabaseFailure('can\'t add data to watchlist')));
         return watchlistTvSeriesBloc;
       },
       act: (bloc) => bloc.add(AddTvSeriesToWatchlist(testTvDetail)),
@@ -178,8 +179,8 @@ void main() {
     blocTest<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
       'should throw failure message status when removie movie from watchlist is failed',
       build: () {
-        when(mockRemoveWatchlistTvSeries.execute(testTvDetail))
-            .thenAnswer((_) async =>
+        when(mockRemoveWatchlistTvSeries.execute(testTvDetail)).thenAnswer(
+            (_) async =>
                 const Left(DatabaseFailure('can\'t add data to watchlist')));
         return watchlistTvSeriesBloc;
       },

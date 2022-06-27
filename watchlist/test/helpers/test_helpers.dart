@@ -4,6 +4,7 @@ import 'package:http/io_client.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie/movie.dart';
 import 'package:tv_series/tv_series.dart';
+
 @GenerateMocks([
   MovieRepository,
   TvSeriesRepository,

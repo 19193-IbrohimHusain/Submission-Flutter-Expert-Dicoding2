@@ -5,6 +5,7 @@ import 'package:movie/movie.dart';
 import 'package:watchlist/presentation/bloc/watchlist_movies/watchlist_movies_bloc.dart';
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/page_test_helper.dart';
+
 void main() {
   late FakeMovieDetailBloc fakeMovieDetailBloc;
   late FakeWatchlistMoviesBloc fakeWatchlistMoviesBloc;

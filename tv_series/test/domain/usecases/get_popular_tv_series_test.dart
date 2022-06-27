@@ -5,7 +5,6 @@ import 'package:tv_series/tv_series.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
-
 void main() {
   late GetPopularTvSeries usecase;
   late MockTvSeriesRepository mockTvRpository;
@@ -21,15 +20,15 @@ void main() {
     group('execute', () {
       test(
           'should get list of tv from the repository when execute function is called',
-              () async {
-            // arrange
-            when(mockTvRpository.getPopularTvSeries())
-                .thenAnswer((_) async => Right(tTv));
-            // act
-            final result = await usecase.execute();
-            // assert
-            expect(result, Right(tTv));
-          });
+          () async {
+        // arrange
+        when(mockTvRpository.getPopularTvSeries())
+            .thenAnswer((_) async => Right(tTv));
+        // act
+        final result = await usecase.execute();
+        // assert
+        expect(result, Right(tTv));
+      });
     });
   });
 }

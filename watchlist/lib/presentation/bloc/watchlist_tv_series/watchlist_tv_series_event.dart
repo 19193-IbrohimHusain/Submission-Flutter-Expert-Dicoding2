@@ -1,6 +1,5 @@
 part of 'watchlist_tv_series_bloc.dart';
 
-
 abstract class WatchlistTvSeriesEvent extends Equatable {}
 
 class OnWatchlistTvSeriesCalled extends WatchlistTvSeriesEvent {

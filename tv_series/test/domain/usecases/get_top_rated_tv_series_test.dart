@@ -18,7 +18,8 @@ void main() {
 
   test('should get list of tv from repository', () async {
     // arrange
-    when(mockTvRepository.getTopRatedTvSeries()).thenAnswer((_) async => Right(tTv));
+    when(mockTvRepository.getTopRatedTvSeries())
+        .thenAnswer((_) async => Right(tTv));
     // act
     final result = await usecase.execute();
     // assert

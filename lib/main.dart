@@ -1,5 +1,6 @@
 import 'package:about/about.dart';
 import 'package:core/core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/movie.dart';
@@ -8,8 +9,10 @@ import 'package:search/search.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:watchlist/watchlist.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await SSLHelper.init();
   di.init();
   runApp(MyApp());
 }
@@ -20,50 +23,22 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         // Movie BLoC Provider
-        BlocProvider(
-          create: (_) => di.locator<NowPlayingMovieBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<PopularMoviesBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TopRatedMoviesBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<MovieDetailBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<MovieSearchBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<MovieRecommendationsBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<WatchlistMoviesBloc>()
-        ),
+        BlocProvider(create: (_) => di.locator<NowPlayingMovieBloc>()),
+        BlocProvider(create: (_) => di.locator<PopularMoviesBloc>()),
+        BlocProvider(create: (_) => di.locator<TopRatedMoviesBloc>()),
+        BlocProvider(create: (_) => di.locator<MovieDetailBloc>()),
+        BlocProvider(create: (_) => di.locator<MovieSearchBloc>()),
+        BlocProvider(create: (_) => di.locator<MovieRecommendationsBloc>()),
+        BlocProvider(create: (_) => di.locator<WatchlistMoviesBloc>()),
 
         // Tv Series provider
-        BlocProvider(
-          create: (_) => di.locator<NowPlayingTvSeriesBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<PopularTvSeriesBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TopRatedTvSeriesBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TvSeriesDetailBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TvSeriesSearchBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TvSeriesRecommendationBloc>()
-        ),
-        BlocProvider(
-          create: (_) => di.locator<WatchlistTvSeriesBloc>()
-        ),
+        BlocProvider(create: (_) => di.locator<NowPlayingTvSeriesBloc>()),
+        BlocProvider(create: (_) => di.locator<PopularTvSeriesBloc>()),
+        BlocProvider(create: (_) => di.locator<TopRatedTvSeriesBloc>()),
+        BlocProvider(create: (_) => di.locator<TvSeriesDetailBloc>()),
+        BlocProvider(create: (_) => di.locator<TvSeriesSearchBloc>()),
+        BlocProvider(create: (_) => di.locator<TvSeriesRecommendationBloc>()),
+        BlocProvider(create: (_) => di.locator<WatchlistTvSeriesBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

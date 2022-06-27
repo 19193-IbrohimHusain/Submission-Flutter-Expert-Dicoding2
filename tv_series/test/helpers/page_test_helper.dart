@@ -5,9 +5,11 @@ import 'package:tv_series/tv_series.dart';
 import 'package:watchlist/watchlist.dart';
 
 // fake now playing Tv Series bloc
-class FakeNowPlayingTvSeriesEvent extends Fake implements NowPlayingTvSeriesEvent {}
+class FakeNowPlayingTvSeriesEvent extends Fake
+    implements NowPlayingTvSeriesEvent {}
 
-class FakeNowPlayingTvSeriesState extends Fake implements NowPlayingTvSeriesState {}
+class FakeNowPlayingTvSeriesState extends Fake
+    implements NowPlayingTvSeriesState {}
 
 class FakeNowPlayingTvSeriesBloc
     extends MockBloc<NowPlayingTvSeriesEvent, NowPlayingTvSeriesState>

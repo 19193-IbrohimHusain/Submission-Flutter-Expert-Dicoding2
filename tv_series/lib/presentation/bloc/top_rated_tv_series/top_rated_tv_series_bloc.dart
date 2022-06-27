@@ -1,4 +1,3 @@
-
 import 'package:tv_series/tv_series.dart';
 
 part 'top_rated_tv_series_event.dart';

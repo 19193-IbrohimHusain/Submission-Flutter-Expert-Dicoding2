@@ -1,18 +1,27 @@
-import 'package:core/core.dart';
-import 'package:dartz/dartz.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:core/core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie/movie.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:dartz/dartz.dart';
 import 'package:search/search.dart';
 
-import 'movie_search_bloc_test.mocks.dart';
+import 'search_movie_bloc_test.mocks.dart';
 
 @GenerateMocks([SearchMovies])
 void main() {
   late MovieSearchBloc searchBloc;
   late MockSearchMovies mockSearchMovies;
+
+  setUp(() {
+    mockSearchMovies = MockSearchMovies();
+    searchBloc = MovieSearchBloc(mockSearchMovies);
+  });
+
+  test('initial state should be empty', () {
+    expect(searchBloc.state, MovieSearchEmpty());
+  });
 
   final tMovieModel = Movie(
     adult: false,
@@ -32,15 +41,6 @@ void main() {
   );
   final tMovieList = <Movie>[tMovieModel];
   const tQuery = 'spiderman';
-
-  setUp(() {
-    mockSearchMovies = MockSearchMovies();
-    searchBloc = MovieSearchBloc(mockSearchMovies);
-  });
-
-  test('initial state should be empty', () {
-    expect(searchBloc.state, MovieSearchEmpty());
-  });
 
   blocTest<MovieSearchBloc, MovieSearchState>(
     'Should emit [Loading, HasData] when data is gotten successfully',

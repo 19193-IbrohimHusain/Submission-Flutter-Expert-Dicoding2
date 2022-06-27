@@ -23,7 +23,9 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       context
           .read<MovieRecommendationsBloc>()
           .add(OnMovieRecommendationsCalled(widget.id));
-      context.read<WatchlistMoviesBloc>().add(FetchWatchlistMovieStatus(widget.id));
+      context
+          .read<WatchlistMoviesBloc>()
+          .add(FetchWatchlistMovieStatus(widget.id));
     });
   }
 
@@ -66,7 +68,8 @@ class DetailContent extends StatefulWidget {
   final MovieDetail movie;
   bool isAddedWatchlist;
 
-  DetailContent(this.movie, this.isAddedWatchlist, {Key? key}) : super(key: key);
+  DetailContent(this.movie, this.isAddedWatchlist, {Key? key})
+      : super(key: key);
 
   @override
   State<DetailContent> createState() => _DetailContentState();
@@ -134,7 +137,7 @@ class _DetailContentState extends State<DetailContent> {
                                     BlocProvider.of<WatchlistMoviesBloc>(
                                             context)
                                         .state;
-                                        
+
                                 if (state is WatchlistMoviesIsAdded) {
                                   final isAdded = state.isAdded;
                                   message = isAdded == false
@@ -239,7 +242,8 @@ class _DetailContentState extends State<DetailContent> {
                                               );
                                             },
                                             child: ClipRRect(
-                                              borderRadius: const BorderRadius.all(
+                                              borderRadius:
+                                                  const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(

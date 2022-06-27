@@ -7,7 +7,7 @@ class NowPlayingTvSeriesEmpty extends NowPlayingTvSeriesState {
   List<Object> get props => [];
 }
 
-class NowPlayingTvSeriesLoading extends NowPlayingTvSeriesState{
+class NowPlayingTvSeriesLoading extends NowPlayingTvSeriesState {
   @override
   List<Object> get props => [];
 }
@@ -20,7 +20,7 @@ class NowPlayingTvSeriesError extends NowPlayingTvSeriesState {
   List<Object> get props => [message];
 }
 
-class NowPlayingTvSeriesHasData extends NowPlayingTvSeriesState{
+class NowPlayingTvSeriesHasData extends NowPlayingTvSeriesState {
   final List<TvSeries> result;
   NowPlayingTvSeriesHasData(this.result);
 

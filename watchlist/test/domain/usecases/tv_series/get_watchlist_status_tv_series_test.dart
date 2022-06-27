@@ -4,7 +4,6 @@ import 'package:watchlist/watchlist.dart';
 
 import '../../../helpers/test_helpers.mocks.dart';
 
-
 void main() {
   late GetWatchListStatusTvSeries usecase;
   late MockTvSeriesRepository mockTvRepository;

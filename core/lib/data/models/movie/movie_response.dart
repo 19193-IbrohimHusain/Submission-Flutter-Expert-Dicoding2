@@ -1,5 +1,3 @@
-
-
 import 'package:core/core.dart';
 
 class MovieResponse extends Equatable {

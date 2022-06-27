@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getNowPlaying();
@@ -12,7 +12,7 @@ abstract class TvSeriesRemoteDataSource {
 }
 
 class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
-  final http.Client client;
+  final IOClient client;
 
   TvSeriesRemoteDataSourceImpl({required this.client});
 
@@ -29,8 +29,7 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
 
   @override
   Future<List<TvSeriesModel>> getPopularTvSeries() async {
-    final response =
-        await client.get(Uri.parse('$baseUrl/tv/popular?$apiKey'));
+    final response = await client.get(Uri.parse('$baseUrl/tv/popular?$apiKey'));
     if (response.statusCode == 200) {
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
@@ -61,8 +60,8 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
 
   @override
   Future<List<TvSeriesModel>> getRecommendedTvSeries(int id) async {
-    final response = await client
-        .get(Uri.parse('$baseUrl/tv/$id/recommendations?$apiKey'));
+    final response =
+        await client.get(Uri.parse('$baseUrl/tv/$id/recommendations?$apiKey'));
     if (response.statusCode == 200) {
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
@@ -72,8 +71,8 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
 
   @override
   Future<List<TvSeriesModel>> getSearchTv(String query) async {
-    final response = await client
-        .get(Uri.parse('$baseUrl/search/tv?$apiKey&query=$query'));
+    final response =
+        await client.get(Uri.parse('$baseUrl/search/tv?$apiKey&query=$query'));
     if (response.statusCode == 200) {
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
