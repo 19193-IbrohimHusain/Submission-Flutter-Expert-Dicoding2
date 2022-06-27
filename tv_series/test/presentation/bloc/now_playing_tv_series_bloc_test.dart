@@ -44,7 +44,7 @@ void main() {
     'should emits OnTheAirTvseriesLoading state and then OnTheAirTvseriesError state when data is failed fetched..',
     build: () {
       when(mockGetNowPlaying.execute())
-          .thenAnswer((_) async =>  const Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return nowPlayingTvSeriesBloc;
     },
     act: (bloc) => bloc.add(NowPlayingTvSeries()),

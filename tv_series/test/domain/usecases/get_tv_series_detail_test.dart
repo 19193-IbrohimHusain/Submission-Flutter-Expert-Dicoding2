@@ -6,7 +6,6 @@ import 'package:tv_series/tv_series.dart';
 import '../../dummy_data/dummy_object_tv_series.dart';
 import '../../helpers/test_helper.mocks.dart';
 
-
 void main() {
   late GetTvSeriesDetail usecase;
   late MockTvSeriesRepository mockMovieRepository;

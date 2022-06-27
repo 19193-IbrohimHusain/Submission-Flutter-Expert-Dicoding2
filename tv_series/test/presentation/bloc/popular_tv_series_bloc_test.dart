@@ -9,7 +9,6 @@ import 'package:tv_series/tv_series.dart';
 import '../../dummy_data/dummy_object_tv_series.dart';
 import 'popular_tv_series_bloc_test.mocks.dart';
 
-
 @GenerateMocks([GetPopularTvSeries])
 void main() {
   late MockGetPopularTvSeries mockGetPopularTvSeries;

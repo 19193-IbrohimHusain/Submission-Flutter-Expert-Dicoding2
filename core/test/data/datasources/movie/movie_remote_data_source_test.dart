@@ -24,10 +24,9 @@ void main() {
     test('should return list of Movie Model when the response code is 200',
         () async {
       // arrange
-      when(mockIOClient
-              .get(Uri.parse('$baseUrl/movie/now_playing?$apiKey')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/movie/now_playing.json'), 200));
+      when(mockIOClient.get(Uri.parse('$baseUrl/movie/now_playing?$apiKey')))
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/movie/now_playing.json'), 200));
       // act
       final result = await dataSource.getNowPlayingMovies();
       // assert
@@ -38,8 +37,7 @@ void main() {
         'should throw a ServerException when the response code is 404 or other',
         () async {
       // arrange
-      when(mockIOClient
-              .get(Uri.parse('$baseUrl/movie/now_playing?$apiKey')))
+      when(mockIOClient.get(Uri.parse('$baseUrl/movie/now_playing?$apiKey')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getNowPlayingMovies();
@@ -49,9 +47,9 @@ void main() {
   });
 
   group('get Popular Movies', () {
-    final tMovieList =
-        MovieResponse.fromJson(json.decode(readJson('dummy_data/movie/popular.json')))
-            .movieList;
+    final tMovieList = MovieResponse.fromJson(
+            json.decode(readJson('dummy_data/movie/popular.json')))
+        .movieList;
 
     test('should return list of movies when response is success (200)',
         () async {
@@ -114,8 +112,8 @@ void main() {
     test('should return movie detail when the response code is 200', () async {
       // arrange
       when(mockIOClient.get(Uri.parse('$baseUrl/movie/$tId?$apiKey')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/movie/movie_detail.json'), 200));
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/movie/movie_detail.json'), 200));
       // act
       final result = await dataSource.getMovieDetail(tId);
       // assert
@@ -135,8 +133,8 @@ void main() {
   });
 
   group('get movie recommendations', () {
-    final tMovieList = MovieResponse.fromJson(
-            json.decode(readJson('dummy_data/movie/movie_recommendations.json')))
+    final tMovieList = MovieResponse.fromJson(json
+            .decode(readJson('dummy_data/movie/movie_recommendations.json')))
         .movieList;
     const tId = 1;
 
@@ -167,8 +165,8 @@ void main() {
   });
 
   group('search movies', () {
-    final tSearchResult = MovieResponse.fromJson(
-            json.decode(readJson('dummy_data/movie/search_spiderman_movie.json')))
+    final tSearchResult = MovieResponse.fromJson(json
+            .decode(readJson('dummy_data/movie/search_spiderman_movie.json')))
         .movieList;
     const tQuery = 'Spiderman';
 

@@ -1,4 +1,3 @@
-
 import 'package:core/core.dart';
 import 'package:tv_series/tv_series.dart';
 
@@ -8,7 +7,7 @@ final testTv = TvSeries(
     id: 1399,
     originalName: 'Game of Thrones',
     overview:
-    "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+        "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
     popularity: 369.594,
     posterPath: '/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
     firstAirDate: '2011-04-17',
@@ -28,13 +27,13 @@ const testTvDetail = TvSeriesDetail(
   firstAirDate: 'firstAirDate',
   seasons: [
     Season(
-      airDate: 'airDate', 
-      episodeCount: 12, 
-      id: 1, 
-      name: 'name', 
-      overview: 'overview', 
-      posterPath: 'posterPath', 
-      seasonNumber: 1)
+        airDate: 'airDate',
+        episodeCount: 12,
+        id: 1,
+        name: 'name',
+        overview: 'overview',
+        posterPath: 'posterPath',
+        seasonNumber: 1)
   ],
   name: 'name',
   voteAverage: 1,

@@ -18,8 +18,7 @@ void main() {
 
   test('should get list of tv from the repository', () async {
     // arrange
-    when(mockTvRepository.getNowPlaying())
-        .thenAnswer((_) async => Right(tTv));
+    when(mockTvRepository.getNowPlaying()).thenAnswer((_) async => Right(tTv));
     // act
     final result = await usecase.execute();
     // assert

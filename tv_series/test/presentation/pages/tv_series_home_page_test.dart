@@ -58,7 +58,8 @@ void main() {
       (WidgetTester tester) async {
     when(() => fakeNowPlayingTvSeriesBloc.state)
         .thenReturn(NowPlayingTvSeriesLoading());
-    when(() => fakePopularTvSeriesBloc.state).thenReturn(PopularTvSeriesLoading());
+    when(() => fakePopularTvSeriesBloc.state)
+        .thenReturn(PopularTvSeriesLoading());
     when(() => fakeTopRatedTvSeriesBloc.state)
         .thenReturn(TopRatedTvSeriesLoading());
 
@@ -106,8 +107,10 @@ void main() {
       (WidgetTester tester) async {
     when(() => fakeNowPlayingTvSeriesBloc.state)
         .thenReturn(NowPlayingTvSeriesEmpty());
-    when(() => fakePopularTvSeriesBloc.state).thenReturn(PopularTvSeriesEmpty());
-    when(() => fakeTopRatedTvSeriesBloc.state).thenReturn(TopRatedTvSeriesEmpty());
+    when(() => fakePopularTvSeriesBloc.state)
+        .thenReturn(PopularTvSeriesEmpty());
+    when(() => fakeTopRatedTvSeriesBloc.state)
+        .thenReturn(TopRatedTvSeriesEmpty());
 
     final containerFinder = find.byType(Container);
 
