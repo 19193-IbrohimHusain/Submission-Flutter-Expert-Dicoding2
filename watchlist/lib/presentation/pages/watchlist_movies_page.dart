@@ -16,7 +16,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   @override
   void initState() {
     super.initState();
-      Future.microtask(() =>
+    Future.microtask(() =>
         context.read<WatchlistMoviesBloc>().add(OnWatchlistMoviesCalled()));
   }
 
@@ -36,45 +36,47 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: BlocBuilder<WatchlistMoviesBloc, WatchlistMoviesState>(
-            builder: (context, state) {
-              if (state is WatchlistMoviesLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is WatchlistMoviesHasData) {
-                final watchlistMovies = state.result;
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    final movie = watchlistMovies[index];
-                    return MovieCard(movie);
-                  },
-                  itemCount: watchlistMovies.length,
-                );
-              } else if (state is WatchlistMoviesEmpty) {
-                return Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        "You don't have any movies yet, lets add some!",
-                        textAlign: TextAlign.center,
-                      ),
-                      ElevatedButton(
-                        onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                            context, HomePage.routeName, (route) => false,
-                        ),
-                        child: const Text('Add Movie'),
-                      ),
-                    ],
+          builder: (context, state) {
+        if (state is WatchlistMoviesLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is WatchlistMoviesHasData) {
+          final watchlistMovies = state.result;
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final movie = watchlistMovies[index];
+              return MovieCard(movie);
+            },
+            itemCount: watchlistMovies.length,
+          );
+        } else if (state is WatchlistMoviesEmpty) {
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "You don't have any movies yet, lets add some!",
+                  textAlign: TextAlign.center,
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    HomePage.routeName,
+                    (route) => false,
                   ),
-                );
-              } else {
-                return const Center(
-                  key: Key('error_msg'),
-                  child: Text('Failed to fetch data'),
-                );
-              }
-            }),
+                  child: const Text('Add Movie'),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return const Center(
+            key: Key('error_msg'),
+            child: Text('Failed to fetch data'),
+          );
+        }
+      }),
     );
   }
 

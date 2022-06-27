@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:http/io_client.dart';
 import 'package:movie/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
@@ -11,49 +12,33 @@ final locator = GetIt.instance;
 Future<void> init() async {
   // BLoC Movies
   locator.registerFactory<NowPlayingMovieBloc>(
-    () => NowPlayingMovieBloc(locator())
-  );
-  locator.registerFactory<PopularMoviesBloc>(
-    () => PopularMoviesBloc(locator())
-  );
-  locator.registerFactory<TopRatedMoviesBloc>(
-    () => TopRatedMoviesBloc(locator())
-  );
-  locator.registerFactory<MovieDetailBloc>(
-    () => MovieDetailBloc(locator())
-  );
-  locator.registerFactory<MovieSearchBloc>(
-    () => MovieSearchBloc(locator())
-  );
+      () => NowPlayingMovieBloc(locator()));
+  locator
+      .registerFactory<PopularMoviesBloc>(() => PopularMoviesBloc(locator()));
+  locator
+      .registerFactory<TopRatedMoviesBloc>(() => TopRatedMoviesBloc(locator()));
+  locator.registerFactory<MovieDetailBloc>(() => MovieDetailBloc(locator()));
+  locator.registerFactory<MovieSearchBloc>(() => MovieSearchBloc(locator()));
   locator.registerFactory<MovieRecommendationsBloc>(
-    () => MovieRecommendationsBloc(locator())
-  );
+      () => MovieRecommendationsBloc(locator()));
   locator.registerFactory<WatchlistMoviesBloc>(
-    () => WatchlistMoviesBloc(locator(), locator(), locator(), locator())
-  );
+      () => WatchlistMoviesBloc(locator(), locator(), locator(), locator()));
 
   //BLoC Tv Series
   locator.registerFactory<NowPlayingTvSeriesBloc>(
-    () => NowPlayingTvSeriesBloc(locator())
-  );
+      () => NowPlayingTvSeriesBloc(locator()));
   locator.registerFactory<PopularTvSeriesBloc>(
-    () => PopularTvSeriesBloc(locator())
-  );
+      () => PopularTvSeriesBloc(locator()));
   locator.registerFactory<TopRatedTvSeriesBloc>(
-    () => TopRatedTvSeriesBloc(locator())
-  );
-  locator.registerFactory<TvSeriesDetailBloc>(
-    () => TvSeriesDetailBloc(locator())
-  );
-  locator.registerFactory<TvSeriesSearchBloc>(
-    () => TvSeriesSearchBloc(locator())
-  );
+      () => TopRatedTvSeriesBloc(locator()));
+  locator
+      .registerFactory<TvSeriesDetailBloc>(() => TvSeriesDetailBloc(locator()));
+  locator
+      .registerFactory<TvSeriesSearchBloc>(() => TvSeriesSearchBloc(locator()));
   locator.registerFactory<TvSeriesRecommendationBloc>(
-    () => TvSeriesRecommendationBloc(locator())
-  );
+      () => TvSeriesRecommendationBloc(locator()));
   locator.registerFactory<WatchlistTvSeriesBloc>(
-    () => WatchlistTvSeriesBloc(locator(), locator(), locator(), locator())
-  );
+      () => WatchlistTvSeriesBloc(locator(), locator(), locator(), locator()));
 
   // Movie use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
@@ -113,4 +98,5 @@ Future<void> init() async {
 
   // external
   locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => IOClient());
 }

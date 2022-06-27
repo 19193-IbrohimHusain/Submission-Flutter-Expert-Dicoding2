@@ -1,4 +1,3 @@
-
 import 'package:core/core.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
@@ -24,7 +23,11 @@ class DatabaseHelperTvSeries {
     final path = await getDatabasesPath();
     final databasePath = '$path/ditontonTv.db';
 
-    var db = await openDatabase(databasePath, version: 1, onCreate: _onCreate);
+    var db = await openDatabase(
+      databasePath,
+      version: 1,
+      onCreate: _onCreate,
+    );
     return db;
   }
 

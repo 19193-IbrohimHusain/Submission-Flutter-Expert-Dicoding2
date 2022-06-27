@@ -68,7 +68,8 @@ class DetailContent extends StatefulWidget {
   final TvSeriesDetail tvSeries;
   late bool isAddedWatchlist;
 
-  DetailContent(this.tvSeries, this.isAddedWatchlist, {Key? key}) : super(key: key);
+  DetailContent(this.tvSeries, this.isAddedWatchlist, {Key? key})
+      : super(key: key);
 
   @override
   State<DetailContent> createState() => _DetailContentState();
@@ -212,7 +213,8 @@ class _DetailContentState extends State<DetailContent> {
                             ),
                             ListView.builder(
                               itemBuilder: (context, index) {
-                                return SeasonCard(widget.tvSeries.seasons[index]);
+                                return SeasonCard(
+                                    widget.tvSeries.seasons[index]);
                               },
                               shrinkWrap: true,
                               itemCount: widget.tvSeries.seasons.length,
@@ -241,8 +243,7 @@ class _DetailContentState extends State<DetailContent> {
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                        final tv =
-                                            tvRecommendations[index];
+                                        final tv = tvRecommendations[index];
                                         return Padding(
                                           padding: const EdgeInsets.all(4.0),
                                           child: InkWell(
@@ -254,7 +255,8 @@ class _DetailContentState extends State<DetailContent> {
                                               );
                                             },
                                             child: ClipRRect(
-                                              borderRadius: const BorderRadius.all(
+                                              borderRadius:
+                                                  const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(

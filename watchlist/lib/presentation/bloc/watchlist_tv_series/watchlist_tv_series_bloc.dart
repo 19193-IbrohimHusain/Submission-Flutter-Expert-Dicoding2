@@ -1,4 +1,3 @@
-
 import 'package:tv_series/tv_series.dart';
 import 'package:watchlist/watchlist.dart';
 

@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/movie.dart';
 
@@ -26,22 +27,23 @@ class _MovieHomePageState extends State<MovieHomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
+        child: Scaffold(
+      appBar: AppBar(
         title: const Text(
           'Ditonton',
           style: TextStyle(fontSize: 20),
-          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
+              FirebaseCrashlytics.instance.crash();
               Navigator.pushNamed(context, SearchPage.routeName);
             },
             icon: const Icon(Icons.search),
           )
         ],
       ),
-        body: Padding(
+      body: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: SingleChildScrollView(
           child: Column(
@@ -52,7 +54,7 @@ class _MovieHomePageState extends State<MovieHomePage> {
                 style: kHeading6,
               ),
               BlocBuilder<NowPlayingMovieBloc, NowPlayingMovieState>(
-                builder: (context, state) {
+                  builder: (context, state) {
                 if (state is NowPlayingMovieLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -110,9 +112,8 @@ class _MovieHomePageState extends State<MovieHomePage> {
             ],
           ),
         ),
-          ),
-      )
-    );
+      ),
+    ));
   }
 
   Row _buildSubHeading({required String title, required Function() onTap}) {

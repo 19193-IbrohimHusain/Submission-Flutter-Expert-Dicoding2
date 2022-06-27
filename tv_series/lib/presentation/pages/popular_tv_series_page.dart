@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:tv_series/tv_series.dart';
+
 class PopularTvSeriesPage extends StatefulWidget {
   static const routeName = '/popular-tvseries';
 
