@@ -1,7 +1,5 @@
 import 'package:core/core.dart';
-import 'package:http/io_client.dart';
 import 'package:movie/movie.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:search/search.dart';
 import 'package:tv_series/tv_series.dart';
@@ -97,6 +95,5 @@ Future<void> init() async {
       () => DatabaseHelperTvSeries());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
-  locator.registerLazySingleton(() => IOClient());
+  locator.registerLazySingleton(() => SSLHelper.client);
 }
